@@ -165,13 +165,13 @@ def user_posts(username):
 
 
 def send_reset_email(user):
-    token = User.get_reset_token()
+    token = User.get_reset_token(user)
     msg = Message('Password Reset Request',
-                  sender='danila.nikitamihai@.com', recipients=[user.email])
+                  sender='noreply@demo.com', recipients=[user.email])
     msg.body = f'''To reset your password, visit the following link:
 {url_for('reset_token', token=token, _external=True)}
 '''
-
+    mail.send(msg)
 
 @app.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():
