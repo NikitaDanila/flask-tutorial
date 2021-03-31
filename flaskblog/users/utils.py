@@ -11,7 +11,7 @@ def save_picture(form_picture):
     _, f_ext = os.path.splitext(form_picture.filename) # '_' convention for unused variable
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(
-        app.root_path, 'static/profile_pics', picture_fn)
+        current_app.root_path, 'static/profile_pics', picture_fn)
     # resizing original picture
     output_size = (125, 125)
     i = Image.open(form_picture)
